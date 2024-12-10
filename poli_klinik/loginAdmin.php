@@ -107,7 +107,7 @@
                 <h4 class="text-center">Login Admin</h4>
                 <p class="login-box-msg text-center">Silahkan login sebagai <b class="text-success">Admin</b> </p>
                 <br><br>
-                <form action="pages/login/checkLogin.php" method="post">
+                <form action="pages/login/checkLoginAdmin.php" method="post">
                         <div style="margin-bottom: 15px;">
                             <label for="username">Username:</label>
                             <input type="text" name="username" style="display: block; width: 100%; padding: 8px;" required>

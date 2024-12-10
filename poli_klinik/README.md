@@ -2,14 +2,11 @@
 
 username dan password admin
 ```
-username : Admin
-password : 1234
+username : admin
+password : 12345
 ```
 
 ## Login sebagai Dokter
 
 username dokter = password dokter
-```
-username : coba
-password : coba
-```
+
