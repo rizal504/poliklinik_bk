@@ -85,29 +85,35 @@ if ($result_pasien && $result_dokter && $result_poli && $result_obat) {
             font-weight: bold;
             /* membuatnya tebal */
         }
+        .bg-foto {
+           background-image: url('assets/images/ruangtunggu.jpg'); 
+           background-size: cover; 
+           background-position: center; 
+           height: 91.8vh; 
+           text: center;
+           background-color: rgba(255, 255, 255, 0.6); /* Warna putih semi-transparan */
+           background-blend-mode: overlay; /* Campurkan gambar dan warna */
+        }
     </style>
 </head>
 
 <body>
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    <div class="bg-foto" >
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="dashboard.php?page=home">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
+                <div class="col-sm-12"style="margin-top:40px">
+                    <h1 class="m-0 text-center" >Selamat Datang <b>Admin</b></h1>
+                    <h1 class="m-0 text-center" >Klinik MitraSehat</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
-    </div>
+    
     <!-- /.content-header -->
+
     <!-- Main content -->
-    <section class="content">
+    <br><br>
+    <section class="content ">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
@@ -130,9 +136,8 @@ if ($result_pasien && $result_dokter && $result_poli && $result_obat) {
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box" style="background-color :#3A96E6">
-                        <div class="inner">
-                            <h3 class="ml-5"><?php echo $jumlah_dokter; ?><sup style="font-size: 20px"></sup></h3>
-
+                        <div class="inner text-white">
+                            <h3 class="ml-5 "><?php echo $jumlah_dokter; ?><sup style="font-size: 20px font:white"></sup></h3>
                             <p class="ml-3">Total Dokter</p>
                         </div>
                         <div class="icon">
@@ -147,7 +152,7 @@ if ($result_pasien && $result_dokter && $result_poli && $result_obat) {
                     <!-- small box -->
                     <div class="small-box" style="background-color :#77E4C8">
                         <div class="inner">
-                            <h3 class="ml-5"><?php echo $jumlah_poli; ?></h3>
+                            <h3 class="ml-4"><?php echo $jumlah_poli; ?></h3>
 
                             <p class="ml-3">Total Poli</p>
                         </div>
@@ -162,7 +167,7 @@ if ($result_pasien && $result_dokter && $result_poli && $result_obat) {
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box" style="background-color :#3A96E6">
-                        <div class="inner">
+                        <div class="inner text-white">
                             <h3 class="ml-5"><?php echo $jumlah_obat; ?></h3>
 
                             <p class="ml-3">Total Jenis Obat</p>
@@ -180,6 +185,7 @@ if ($result_pasien && $result_dokter && $result_poli && $result_obat) {
             <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
     </section>
+    </div>
     <!-- /.content -->
 
     <!-- Link to Bootstrap JS and other necessary scripts-->

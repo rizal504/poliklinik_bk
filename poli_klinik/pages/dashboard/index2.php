@@ -1,21 +1,62 @@
 <?php
     require 'config/koneksi.php';
-    $id_poli = $_SESSION['id_poli'];
 
+    // Ambil data dari session
+    $id_poli = $_SESSION['id_poli']; // ID Poli dari Session
+    $id_dokter = $_SESSION['id'];   // ID Dokter dari Session
+
+    // Query untuk mendapatkan nama poli
     $query_poli = "SELECT nama_poli FROM poli WHERE id = $id_poli";
-    $result = mysqli_query($mysqli,$query_poli);
+    $result_poli = mysqli_query($mysqli, $query_poli);
 
-    if ($result) {
-        // Ambil hasil query
-        $row = mysqli_fetch_assoc($result);
-
-        // Tampilkan nama poli
+    if ($result_poli && mysqli_num_rows($result_poli) > 0) {
+        $row = mysqli_fetch_assoc($result_poli);
         $nama_poli = $row['nama_poli'];
     } else {
-        // Handle error jika query gagal
         $nama_poli = "Tidak dapat mendapatkan nama poli";
     }
+
+    // Query untuk menghitung jumlah pasien yang telah diperiksa
+    $query_pasien_diperiksa = "SELECT COUNT(DISTINCT pasien.id) as totalPasien
+        FROM detail_periksa 
+        INNER JOIN periksa ON detail_periksa.id_periksa = periksa.id 
+        INNER JOIN daftar_poli ON periksa.id_daftar_poli = daftar_poli.id 
+        INNER JOIN pasien ON daftar_poli.id_pasien = pasien.id 
+        INNER JOIN obat ON detail_periksa.id_obat = obat.id 
+        INNER JOIN jadwal_periksa ON daftar_poli.id_jadwal = jadwal_periksa.id 
+        INNER JOIN dokter ON jadwal_periksa.id_dokter = dokter.id 
+        WHERE dokter.id = '$id_dokter' AND daftar_poli.status_periksa = '1'";
+
+    $result_pasien_diperiksa = mysqli_query($mysqli, $query_pasien_diperiksa);
+
+    if ($result_pasien_diperiksa && mysqli_num_rows($result_pasien_diperiksa) > 0) {
+        $data = mysqli_fetch_assoc($result_pasien_diperiksa);
+        $totalPasien = $data['totalPasien']; // Menyimpan jumlah pasien
+    } else {
+        $totalPasien = "Data tidak ditemukan";
+    }
+
+    // Query untuk menghitung jumlah pasien yang belum diperiksa
+    $query_pasien_belum_diperiksa = "SELECT COUNT(DISTINCT pasien.id) as totalBelumDiperiksa
+        FROM daftar_poli 
+        INNER JOIN pasien ON daftar_poli.id_pasien = pasien.id 
+        INNER JOIN jadwal_periksa ON daftar_poli.id_jadwal = jadwal_periksa.id 
+        INNER JOIN dokter ON jadwal_periksa.id_dokter = dokter.id 
+        WHERE dokter.id = '$id_dokter' AND daftar_poli.status_periksa = '0'";
+
+    $result_pasien_belum_diperiksa = mysqli_query($mysqli, $query_pasien_belum_diperiksa);
+
+    if ($result_pasien_belum_diperiksa && mysqli_num_rows($result_pasien_belum_diperiksa) > 0) {
+        $data_belum = mysqli_fetch_assoc($result_pasien_belum_diperiksa);
+        $totalBelumDiperiksa = $data_belum['totalBelumDiperiksa']; // Menyimpan jumlah pasien
+    } else {
+        $totalBelumDiperiksa = "Data tidak ditemukan";
+    }
+
+     // Menghitung total keseluruhan pasien
+     $totalKeseluruhan = $totalPasien + $totalBelumDiperiksa;
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,7 +117,6 @@
            background-position: center; 
            height: 91.8vh; 
            text: center;
-/
         }
     </style>
 </head>
@@ -105,8 +145,7 @@
                     <!-- small box -->
                     <div class="small-box " style="background-color :#3A96E6; color:white">
                         <div class="inner">
-                            <h3>2</h3>
-
+                            <h3><?php echo htmlspecialchars($totalKeseluruhan); ?></h3>
                             <p>Jumlah Pasien <?php echo $nama_poli; ?></p>
                         </div>
                         <div class="icon">
@@ -121,8 +160,7 @@
                     <!-- small box -->
                     <div class="small-box " style="background-color :#77E4C8">
                         <div class="inner">
-                            <h3>1<sup style="font-size: 20px"></sup></h3>
-
+                            <h3><?php echo $totalPasien; ?><sup style="font-size: 20px"></sup></h3>
                             <p>Pasien Telah diperiksa</p>
                         </div>
                         <div class="icon">
@@ -137,7 +175,7 @@
                     <!-- small box -->
                     <div class="small-box " style="background-color :#3A96E6; color:white">
                         <div class="inner">
-                            <h3>2</h3>
+                            <h3><?php echo htmlspecialchars($totalBelumDiperiksa); ?></h3>
 
                             <p>Pasien Belum Diperiksa</p>
                         </div>

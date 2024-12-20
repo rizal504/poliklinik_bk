@@ -3,13 +3,13 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-right text-bold">Profile Pasien</h1>
+                <h1 class="m-0 text-right text-bold">Profile Dokter</h1>
                 
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="index.php?page=home">Home</a></li>
-                    <li class="breadcrumb-item active">Profile Pasien</li>
+                    <li class="breadcrumb-item active">Profile Dokter</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -33,7 +33,7 @@
                                 <?php
                             require 'config/koneksi.php';
                             
-                            $query = "SELECT pasien.id, pasien.nama, pasien.alamat, pasien.no_ktp, pasien.no_hp FROM pasien WHERE id = '$id_pasien'";
+                            $query = "SELECT dokter.id, dokter.nama, dokter.alamat, dokter.no_hp FROM dokter WHERE id = '$id_dokter'";
                             $result = mysqli_query($mysqli, $query);
 
                             while ($data = mysqli_fetch_assoc($result)) {
@@ -49,16 +49,10 @@
                                         <td style="white-space: pre-line;"><?php echo htmlspecialchars($data['alamat']); ?></td>
                                     </tr>
                                     <tr>
-                                        <th>No KTP</th>
-                                        <td><?php echo htmlspecialchars($data['no_ktp']); ?></td>
-                                    </tr>
-                                    <tr>
                                         <th>No HP</th>
                                         <td><?php echo htmlspecialchars($data['no_hp']); ?></td>
                                     </tr>
-                                    
-                                      
-                                           
+                               
                                    
                             </tbody>
                              <div class="float-right" style="margin: 10px">
@@ -89,7 +83,7 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <!-- Form edit data poli disini -->
-                                                    <form action="pages/pasien/updateProfile.php" method="post">
+                                                    <form action="pages/dokter/updateProfileDokter.php" method="post">
                                                         <input type="hidden" class="form-control" id="id" name="id"
                                                             value="<?php echo $data['id'] ?>" required>
                                                         <div class="form-group">
@@ -102,11 +96,6 @@
                                                             <label for="alamat" class=" d-block">Alamat</label>
                                                             <textarea class="form-control" rows="3" id="alamat"
                                                                 name="alamat"><?php echo $data['alamat'] ?></textarea>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="no_ktp" class=" d-block">Nomor KTP</label>
-                                                            <textarea class="form-control" rows="3" id="no_ktp"
-                                                                name="no_ktp"><?php echo $data['no_ktp'] ?></textarea>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="no_hp" class=" d-block">Nomor Telepon</label>

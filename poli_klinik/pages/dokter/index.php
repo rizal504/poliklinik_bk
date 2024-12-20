@@ -100,8 +100,8 @@
                                 <!-- TAMPILKAN DATA dokter DI SINI -->
                                 <?php
                             require 'config/koneksi.php';
-                            $no = 1;
-                            $query = "SELECT dokter.id, dokter.nama, dokter.alamat, dokter.no_hp, poli.nama_poli FROM dokter INNER JOIN poli ON dokter.id_poli = poli.id";
+                            $no = 1; 
+                            $query = "SELECT dokter.id, dokter.nama, dokter.alamat, dokter.no_hp, poli.nama_poli FROM dokter INNER JOIN poli ON dokter.id_poli = poli.id WHERE dokter.is_deleted = 0";
                             $result = mysqli_query($mysqli, $query);
 
                             while ($data = mysqli_fetch_assoc($result)) {

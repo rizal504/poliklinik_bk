@@ -86,7 +86,7 @@
                                 <?php
                             require 'config/koneksi.php';
                             $no = 1;
-                            $query = "SELECT * FROM obat";
+                            $query = "SELECT * FROM obat WHERE is_deleted = 0";;
                             $result = mysqli_query($mysqli, $query);
 
                             while ($data = mysqli_fetch_assoc($result)) {

@@ -80,7 +80,7 @@
                                 <?php
                             require 'config/koneksi.php';
                             $no = 1;
-                            $query = "SELECT * FROM poli";
+                            $query = "SELECT * FROM poli WHERE is_deleted = 0";
                             $result = mysqli_query($mysqli, $query);
 
                             while ($data = mysqli_fetch_assoc($result)) {

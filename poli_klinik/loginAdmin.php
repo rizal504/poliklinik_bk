@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    
 
 <head>
     <!-- Copyright: © 2024 Sistem Temu Janji Pasien - dibuat sebagai syarat sertifikasi oleh Syaiful Rizal Sidiq -->
@@ -7,6 +8,8 @@
     <title>Login Admin</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Fav Icon -->
+    <link rel="icon" type="image/png" href="asset/images/logo_dinus.png">
     <!-- Tambahan CSS -->
     <style>
         body {

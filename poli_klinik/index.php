@@ -74,7 +74,7 @@
     }
 
     .home-page {
-        background-image: url('assets/images/homebg.png');
+    background-image: url('assets/images/homebg.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

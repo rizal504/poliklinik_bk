@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
     session_start();
+    $id_dokter = $_SESSION['id'];
     $username = $_SESSION['username'];
     $id_poli = $_SESSION['id_poli'];
-    $id_dokter = $_SESSION['id'];
 
     if ($username == "") {
         header("location:login.php");
@@ -16,10 +16,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html lang="en">
 
 <head>
-    <!-- Copyright: © 2024 Sistem Temu Janji Pasien - dibuat sebagai syarat sertifikasi oleh Syaiful Rizal Sidiq -->
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Copyright: © 2024 Sistem Temu Janji Pasien - dibuat sebagai syarat sertifikasi oleh syaiful rizal sidiq -->
     <title>Poliklinik</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -45,7 +44,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <?php include ('pages/dashboard/index2.php') ?>
+            <?php include ('pages/jadwalPeriksa/index.php') ?>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->

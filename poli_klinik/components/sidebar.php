@@ -86,7 +86,13 @@
                         <li class="nav-item">
                             <a href="periksaPasien.php" class="nav-link">
                                 <i class="fas fa-solid fa-stethoscope nav-icon"></i>
-                                <p>Memeriksa Pasien <span class="right badge badge-success">Dokter</span></p>
+                                <p>Periksa Pasien <span class="right badge badge-success">Dokter</span></p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="profile_dokter.php" class="nav-link">
+                                <i class="fas fa-solid fa-user nav-icon"></i>
+                                <p>Profile<span class="right badge badge-success">Dokter</span></p>
                             </a>
                         </li>
                         <li class="nav-item">

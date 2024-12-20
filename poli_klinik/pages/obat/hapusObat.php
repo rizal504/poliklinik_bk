@@ -3,25 +3,35 @@ include("../../config/koneksi.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil nilai dari form
-    $id = $_POST["id"];
+    $id = intval($_POST["id"]); // Sanitasi input untuk mencegah SQL Injection
 
-    // Query untuk melakukan update data obat
-    $query = "DELETE FROM obat WHERE id = $id";
+    // Query untuk melakukan soft delete dengan mengubah nilai is_deleted menjadi 1
+    $query = "UPDATE obat SET is_deleted = 1 WHERE id = ?";
 
-    // Eksekusi query
-    if (mysqli_query($mysqli, $query)) {
-        // Jika berhasil, redirect kembali ke halaman index atau sesuaikan dengan kebutuhan Anda
-        echo '<script>';
-        echo 'alert("Data obat berhasil dihapus!");';
-        echo 'window.location.href = "../../obat.php";';
-        echo '</script>';
-        exit();
+    // Persiapkan statement untuk menghindari SQL Injection
+    if ($stmt = $mysqli->prepare($query)) {
+        $stmt->bind_param("i", $id);
+
+        // Eksekusi query
+        if ($stmt->execute()) {
+            echo '<script>';
+            echo 'alert("Data obat berhasil dihapus!");';
+            echo 'window.location.href = "../../obat.php";';
+            echo '</script>';
+        } else {
+            echo '<script>';
+            echo 'alert("Gagal menghapus data obat! Silakan coba lagi.");';
+            echo 'window.location.href = "../../obat.php";';
+            echo '</script>';
+        }
+
+        // Tutup statement
+        $stmt->close();
     } else {
-        // Jika terjadi kesalahan, tampilkan pesan error
-        echo "Error: " . $query . "<br>" . mysqli_error($mysqli);
+        echo "Error: " . $mysqli->error;
     }
 }
 
 // Tutup koneksi
-mysqli_close($mysqli);
+$mysqli->close();
 ?>

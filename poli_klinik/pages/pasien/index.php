@@ -93,7 +93,7 @@
                                 <?php
                             require 'config/koneksi.php';
                             $no = 1;
-                            $query = "SELECT * FROM pasien";
+                            $query = "SELECT * FROM pasien WHERE is_deleted = 0";
                             $result = mysqli_query($mysqli, $query);
 
                             while ($data = mysqli_fetch_assoc($result)) {
@@ -160,7 +160,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Modal Hapus Data Obat -->
+                                    <!-- Modal Hapus Data Pasien -->
                                     <div class="modal fade" id="hapusModal<?php echo $data['id'] ?>" tabindex="-1"
                                         role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
