@@ -166,7 +166,7 @@
                         <div class="icon">
                         <i class="fas fa-user-check"></i>
                         </div>
-                        <a href="" class="small-box-footer">More info <i
+                        <a href="riwayatPasien.php" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -182,7 +182,7 @@
                         <div class="icon">
                         <i class="fas fa-user-clock"></i>
                         </div>
-                        <a href="" class="small-box-footer">More info <i
+                        <a href="periksaPasien.php" class="small-box-footer">More info <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>

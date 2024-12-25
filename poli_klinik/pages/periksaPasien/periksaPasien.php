@@ -1,10 +1,10 @@
 <?php
     require '../../config/koneksi.php';
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        $id = $_POST['id'];
-        $tanggalPeriksa = $_POST['tanggal_periksa'];
-        $catatan = $_POST['catatan'];
-        $arrayObat = $_POST['obat'];
+        $id = $_POST['id']; // ID daftar pasien dari tabel daftar_poli.
+        $tanggalPeriksa = $_POST['tanggal_periksa']; //Tanggal pemeriksaan.
+        $catatan = $_POST['catatan']; //Catatan terkait pemeriksaan.
+        $arrayObat = $_POST['obat']; //Array berisi daftar ID obat yang dipilih.
 
         $updateStatus = "UPDATE daftar_poli SET status_periksa = '1' WHERE id = '$id'";
         $query = mysqli_query($mysqli,$updateStatus);
@@ -13,7 +13,7 @@
           $insertPeriksa = "INSERT INTO periksa (id_daftar_poli, tgl_periksa, catatan, biaya_periksa) VALUES ('$id', '$tanggalPeriksa', '$catatan', 150000)";
           $queryInsertPeriksa = mysqli_query($mysqli,$insertPeriksa);
           if ($queryInsertPeriksa) {
-            $getLastData = "SELECT * FROM periksa ORDER BY id DESC LIMIT 1";
+            $getLastData = "SELECT * FROM periksa ORDER BY id DESC LIMIT 1";//fungsi ambil data terakhir periksa
             $queryGetLastData = mysqli_query($mysqli, $getLastData);
             $getIdPeriksa = mysqli_fetch_assoc($queryGetLastData);
         
@@ -21,12 +21,13 @@
         
             // Inisialisasi total biaya dengan nilai awal 150000
             $totalBiaya = 150000;
-        
+
+            //Menyimpan detail obat yang dipilih ke tabel detail_periksa.
             foreach ($arrayObat as $obat) {
                 $inserDetailPeriksa = "INSERT INTO detail_periksa (id_periksa, id_obat) VALUES ('$idPeriksa', '$obat')";
                 $queryDetailPeriksa = mysqli_query($mysqli, $inserDetailPeriksa);
         
-                // Ambil harga obat dari database
+                //Mengambil harga obat dari tabel obat dan menambahkan harga tersebut ke $totalBiaya
                 $getHargaObat = "SELECT harga FROM obat WHERE id = '$obat'";
                 $queryHargaObat = mysqli_query($mysqli, $getHargaObat);
                 $hargaObat = mysqli_fetch_assoc($queryHargaObat)['harga'];

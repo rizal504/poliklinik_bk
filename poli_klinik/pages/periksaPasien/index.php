@@ -72,7 +72,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <!-- Form tambah data obat disini -->
+                                                        <!-- Form tambah data periksa disini -->
 
                                                         <?php
                                                             $idDaftarPoli = $data['id'];
