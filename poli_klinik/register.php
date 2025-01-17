@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      <!-- Fav Icon -->
-     <link rel="icon" type="image/png" href="asset/images/logo_dinus.png">
+      <!-- Fav Icon -->
+    <link rel="icon" type="image/png" href="assets/images/logo_dinus.png">
+
     <!-- Tambahan CSS -->
     <style>
         body {

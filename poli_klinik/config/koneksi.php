@@ -2,10 +2,9 @@
 $databaseHost = 'localhost:3307';
 $databaseName = 'poli_bk';
 $databaseUsername = 'root';
-$databasePassword = 'your_password';
+$databasePassword = '';
  
-$mysqli = mysqli_connect($databaseHost, 
-    $databaseUsername, $databasePassword, $databaseName);
+$mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName);
 
 // Periksa koneksi
 if (!$mysqli) {

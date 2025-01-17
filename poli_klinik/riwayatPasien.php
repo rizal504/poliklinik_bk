@@ -30,7 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
     <!-- Fav Icon -->
-    <link rel="icon" type="image/png" href="asset/images/logo_dinus.png">
+    <link rel="icon" type="image/png" href="assets/images/logo_dinus.png">
 </head>
 
 <body class="hold-transition sidebar-mini">
